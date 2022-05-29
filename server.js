@@ -90,17 +90,6 @@ app.get("/getLessons", (req, res) => {
                             oneDayLessons[indexCurDay].push(l)
                         }
                     }
-                    // if (lastLesson === -1) {
-                    //     oneDayLessons.push([l]);
-                    //     lastLesson++;
-                    // } else {
-                    //     if (isEqualDate(new Date(l.date), new Date(oneDayLessons[lastLesson][0].date))){
-                    //         oneDayLessons[lastLesson].push(l);
-                    //     } else {
-                    //         oneDayLessons.push([l]);
-                    //         lastLesson++;
-                    //     }
-                    // }
                 });
 
                 resObj.res = oneDayLessons;
