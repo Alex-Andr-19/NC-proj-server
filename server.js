@@ -1,8 +1,8 @@
 const express = require('express')
 const app = express()
 const port = process.env.PORT || 3000
-// const url = require('url')
-// const queryString = require('querystring')
+const url = require('url')
+const queryString = require('querystring')
 
 const sqlite3 = require('sqlite3').verbose()
 let db = new sqlite3.Database('./db.sqlite')
@@ -106,6 +106,14 @@ app.get("/getGroups", (req, res) => {
     let sql = 'SELECT * FROM "Group"'
 
     getData(sql, res)
+})
+
+app.get("/auth", (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    let parsedUrl = url.parse(req.url);
+    let parsedQS = queryString.parse(parsedUrl.query);
+
+    console.log(parsedQS);
 })
 
 app.listen(port, () => {
